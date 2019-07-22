@@ -1,25 +1,24 @@
 <template>
-  <div id="app">
-    <Ideas/>
+  <div>
+    <a href="/">Home</a>
+    <a href="/new">new idea</a>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Ideas from './components/Ideas'
+
 
 export default {
-  name: 'app',
   components:{
-    Ideas
-  }
-  ,
+  },
   data () {
     return {
-     ideas:[]
     }
   }
 }
 </script>
 
 <style>
+
 </style>
