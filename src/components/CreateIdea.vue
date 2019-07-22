@@ -1,28 +1,35 @@
 <template>
   <div>
     <h1>New idea</h1>
-    <!-- <ul>
-      <li v-for="idea in ideas" :key="idea.id">
-        <h1>{{idea.title}}</h1>
-        <p>{{idea.body}}</p> 
-      </li>
-    </ul> -->
+      <div>
+        <form @submit.prevent="createIdea()">
+          <label for="">title: </label>
+          <input type="text" v-model="idea.title">
+          
+          <label for="">body: </label>
+          <textarea type="text" v-model="idea.body"/>
+          <button>submit</button>
+        </form>
+      </div>
   </div>
 </template>
 
 <script>
+import Idea from '../models/Idea'
+
 export default {
   data(){
     return{
-      // ideas:[]
+      idea: new Idea
     }
   },
-  // created(){
-  //   console.log('this.ideas')
-  //   this.$http.get('https://jsonplaceholder.typicode.com/todos')
-  //     .then(response => response.json())
-  //     .then(ideas => this.ideas = ideas)
-  // }
+
+  methods:{
+    createIdea(){
+      this.$http.post('http://localhost:3001/api/v1/ideas', this.idea)
+      .then(() => this.idea = new Idea(), err => console.log(err));
+    }
+  }
 }
 </script>
 
