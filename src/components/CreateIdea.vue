@@ -9,7 +9,7 @@
           <label for="">body: </label>
           <textarea type="text" v-model="idea.body"/>
           <button>submit</button>
-          <router-link to="/">
+          <router-link :to="{name: 'home'}">
             <button>
               Voltar
             </button>
