@@ -2,17 +2,19 @@
   <div>
     <h1>Ideas</h1>
     <ul>
-       <p v-show="message" class="">{{ message }}</p>
+       <!-- <p v-show="message" class="">{{ message }}</p> -->
       <li v-for="idea in ideas" :key="idea.id">
         <h1>{{idea.title}}</h1>
         <p>{{idea.body}}</p>
-        <button @click="removeIdea(idea)">delete</button>
+        <button @click="remove(idea)">delete</button>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import IdeaService from '../services/IdeaService'
+
 export default {
   data(){
     return{
@@ -20,23 +22,24 @@ export default {
       message:''
     }
   },
+
   created(){
-    this.$http.get('http://localhost:3001/api/v1/ideas')
-      .then(response => response.json())
-      .then(ideas => this.ideas = ideas)
+    this.service = new IdeaService(this.$resource)
+    this.service.list().then(ideas => this.ideas = ideas)
   },
 
   methods:{
-    removeIdea(idea){
-      this.$http(`http://localhost:3001/api/v1/ideas/${idea.id}`)
+    remove(idea){
+      this.service
+        .destroy(idea.id)
         .then(
           () => {
             let index = this.ideas.indexOf(idea);
             this.ideas.splice(index, 1);
-            this.message = 'Ideia removida com sucesso'
+            // this.message = 'Idea successfully removed'
           }, 
           err => {
-            this.mensagem = 'Não foi possível remover a Ideia';
+            // this.mensagem = 'Unable to remove Idea';
             console.log(err);
           }
         )

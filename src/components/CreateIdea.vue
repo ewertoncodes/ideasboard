@@ -9,6 +9,11 @@
           <label for="">body: </label>
           <textarea type="text" v-model="idea.body"/>
           <button>submit</button>
+          <router-link to="/">
+            <button>
+              Voltar
+            </button>
+          </router-link>
         </form>
       </div>
   </div>
@@ -16,6 +21,7 @@
 
 <script>
 import Idea from '../models/Idea'
+import IdeaService from '../services/IdeaService'
 
 export default {
   data(){
@@ -23,10 +29,13 @@ export default {
       idea: new Idea
     }
   },
+  created(){
+    this.service = new IdeaService(this.$resource)
+  },
 
   methods:{
     createIdea(){
-      this.$http.post('http://localhost:3001/api/v1/ideas', this.idea)
+      this.service.create(this.idea)
       .then(() => this.idea = new Idea(), err => console.log(err));
     }
   }

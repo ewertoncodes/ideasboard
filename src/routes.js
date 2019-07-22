@@ -2,6 +2,7 @@ import CreateIdea from './components/CreateIdea'
 import Ideas from './components/Ideas'
 
 export const routes = [
-  { path:'', component: Ideas, title: 'Home' },
-  { path:'/new', component: CreateIdea, title: 'New Idea' }
+  { path:'', name: 'ideas', component: Ideas, title: 'Home', menu:true },
+  { path:'*', component: Ideas, menu:false },
+  { path:'/new', name:'create-idea' ,component: CreateIdea, title: 'New Idea', menu:true }
 ];
