@@ -11,7 +11,7 @@ import VeeValidate from 'vee-validate';
 Vue.use(Buefy)
 
 Vue.use(VueResource);
-Vue.http.options.root = 'http://localhost:3001/';
+Vue.http.options.root = 'http://localhost:3000/';
 
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
