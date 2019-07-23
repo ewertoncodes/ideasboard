@@ -5,6 +5,9 @@
 ## Build Setup
 
 ``` bash
+#clone the repository
+git clone https://github.com/ewertonorg/ideasboard.git
+
 # install dependencies
 npm install
 
