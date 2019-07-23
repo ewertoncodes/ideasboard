@@ -8,6 +8,9 @@
 #clone the repository
 git clone https://github.com/ewertonorg/ideasboard.git
 
+#enter in folder
+cd ideasboard
+
 # install dependencies
 npm install
 
