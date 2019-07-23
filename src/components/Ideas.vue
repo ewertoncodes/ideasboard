@@ -13,7 +13,7 @@
       </div>
       <footer class="card-footer">
         <router-link :to="{ name: 'change-idea', params: { id : idea.id }}">
-           <a class="card-footer-item" @click="remove(idea)">update</a>
+           <a class="card-footer-item">update</a>
         </router-link>
         <a class="card-footer-item" @click="remove(idea)">delete</a>
       </footer>
@@ -38,6 +38,9 @@ export default {
   },
 
   methods:{
+    // update(idea){
+    //   this.service.
+    // },
     remove(idea){
       this.service
         .destroy(idea.id)
