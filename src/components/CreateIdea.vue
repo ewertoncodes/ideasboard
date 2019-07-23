@@ -63,9 +63,11 @@ export default {
           .then(() => {
             if(this.id) this.$router.push({name: 'ideas'});
             this.idea = new Idea();
+            this.$validator.reset();
           }, err => console.log(err));
         }
       });
+      this.$validator.reset()
     }
   }
 }
