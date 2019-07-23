@@ -57,11 +57,15 @@ export default {
 
   methods:{
     createIdea(){
-    this.service.create(this.idea)
-    .then(() => {
-      if(this.id) this.$router.push({name: 'ideas'});
-      this.idea = new Idea();
-      }, err => console.log(err));
+      this.$validator.validateAll().then(success=>{
+        if(success){
+          this.service.create(this.idea)
+          .then(() => {
+            if(this.id) this.$router.push({name: 'ideas'});
+            this.idea = new Idea();
+          }, err => console.log(err));
+        }
+      });
     }
   }
 }
