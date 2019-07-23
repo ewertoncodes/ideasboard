@@ -1,14 +1,23 @@
 <template>
-  <div>
-    <h1>Ideas</h1>
-    <ul>
-       <!-- <p v-show="message" class="">{{ message }}</p> -->
-      <li v-for="idea in ideas" :key="idea.id">
-        <h1>{{idea.title}}</h1>
-        <p>{{idea.body}}</p>
-        <button @click="remove(idea)">delete</button>
-      </li>
-    </ul>
+  <div class="container is-fluid">
+    <div v-for="idea in ideas" :key="idea.id" class="card">
+      <header class="card-header">
+        <p class="card-header-title content">
+          {{idea.title}}
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          {{idea.body}}
+        </div>
+      </div>
+      <footer class="card-footer">
+        <router-link :to="{ name: 'change-idea', params: { id : idea.id }}">
+           <a class="card-footer-item" @click="remove(idea)">update</a>
+        </router-link>
+        <a class="card-footer-item" @click="remove(idea)">delete</a>
+      </footer>
+    </div>          
   </div>
 </template>
 
@@ -49,5 +58,18 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  float: left;
+  width: 270px;
+  margin: 15px;
+}
 
+.content {
+  width: 250px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: ltr;
+}
 </style>

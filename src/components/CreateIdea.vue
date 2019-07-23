@@ -1,19 +1,32 @@
 <template>
-  <div>
-    <h1>New idea</h1>
-      <div>
+  <div class="create-idea-form">
+      <div class="container">
         <form @submit.prevent="createIdea()">
-          <label for="">title: </label>
-          <input type="text" v-model="idea.title">
           
-          <label for="">body: </label>
-          <textarea type="text" v-model="idea.body"/>
-          <button>submit</button>
-          <router-link :to="{name: 'home'}">
-            <button>
-              Voltar
-            </button>
-          </router-link>
+          <div class="field">
+            <label  class="label"> Title: </label>
+            <input class="input" type="text" v-model="idea.title">
+          </div>
+
+          <div class="field">
+            <label for="">Description: </label>
+            <textarea class="textarea" type="text" v-model="idea.body"/>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link">Submit</button>
+            </div>
+
+            <div class="control">
+              <router-link :to="{name: 'ideas'}">
+                <button class="button">
+                  Voltar
+                </button>
+              </router-link>
+            </div>
+          </div>
+
         </form>
       </div>
   </div>
@@ -43,5 +56,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .create-idea-form {
+    margin-top:30px;
+  }
 </style>
