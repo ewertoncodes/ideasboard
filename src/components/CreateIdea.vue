@@ -67,7 +67,6 @@ export default {
           }, err => console.log(err));
         }
       });
-      this.$validator.reset()
     }
   }
 }
